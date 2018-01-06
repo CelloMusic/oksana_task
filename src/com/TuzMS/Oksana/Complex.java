@@ -36,5 +36,9 @@ public class Complex {
 		//Поделить это число на с
 		return this.mul(c.sopr()).mul(1 / (c.re * c.re + c.im * c.im));
 	}
+	public double ampl() {
+		//Возвращает амплитуду этого числа
+		return (this.re * this.re + this.im * this.im);
+	}
 	
 }
