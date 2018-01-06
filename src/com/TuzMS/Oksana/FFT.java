@@ -2,6 +2,9 @@ package com.TuzMS.Oksana;
 
 public class FFT {
 	//Быстрое преобразование Фурье
+	//Алгоритм БПФ был взят с ресурса
+	//http://ru.m.wikibooks.nym.su/wiki/Реализации_алгоритмов/Быстрое_преобразование_Фурье
+	//Пример, приведённый на языке С#
 	
 	private static Complex W(int k, int N) {
 		if (k % N == 0) return new Complex(1);
@@ -11,7 +14,27 @@ public class FFT {
 		}
 	}
 	
+	public static Complex[] prefft(Complex[] x) {
+		//Так как БПФ требует, чтоб кол-во элементов было кратно стереням 2, 
+		//этот метод дописывает необходимое число нулей в конце массива.
+		//Данный метод нужно обязательно использовать перед БПФ.
+		int N = x.length;
+		boolean b = true;
+		int i = 0;
+		while (b) {
+			if (N == Math.pow(2, ++i)) return x;
+			else if (N < Math.pow(2, i)) b = false;
+		}
+		Complex[] X = new Complex[(int) Math.pow(2, i)];
+		for (int j = 0; j < Math.pow(2, i); j++) {
+			if (j < N) X[j] = x[j];
+			else X[j] = Complex.doubleToComplex(0);
+		}
+		return X;
+	}
+	
 	public static Complex[] fft(Complex[] x) {
+		//Сам БПФ
 		Complex[] X;
 		int N = x.length;
 		if (N == 2) {
@@ -37,6 +60,7 @@ public class FFT {
 	}
 	
 	public static Complex[] nfft(Complex[] X) {
+		//Центрирование массива спектра
 		int N = X.length;
 		Complex[] X_n = new Complex[N];
 		for (int i = 0; i < N; i++) {
