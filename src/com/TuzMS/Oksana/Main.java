@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		double[] d = {1, 1, 1, 0.995, 0.982, 0.934, 0.843, 0.704,
-				0.579, 0.445, 0.13011, 0.223, 0.156, 0.09, 0.034,
+				0.579, 0.445, 0.3011, 0.223, 0.156, 0.09, 0.034,
 				0.008, 0.0001, 0};
 		Complex[] x = new Complex[d.length];
 		for (int i = 0; i < x.length; i++) {
