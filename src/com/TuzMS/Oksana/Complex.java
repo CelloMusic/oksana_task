@@ -40,7 +40,7 @@ public class Complex {
 	}
 	public double ampl() {
 		//Возвращает амплитуду этого числа
-		return (this.re * this.re + this.im * this.im);
+		return Math.sqrt(this.re * this.re + this.im * this.im);
 	}
 	public static Complex doubleToComplex(double re) {
 		//Конвертирование duble в комплексное число
