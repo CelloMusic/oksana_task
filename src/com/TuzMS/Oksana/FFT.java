@@ -63,7 +63,7 @@ public class FFT {
 		//Центрирование массива спектра
 		int N = X.length;
 		Complex[] X_n = new Complex[N];
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < N/2; i++) {
 			X_n[i] = X[i + N/2];
 			X_n[N/2 + i] = X[i];
 		}
