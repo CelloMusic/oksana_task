@@ -12,7 +12,9 @@ public class Complex {
 	public Complex(double re) {
 		this.re = re;
 	}
-		
+
+	
+	
 	public Complex sopr() {
 		return new Complex(re, -im);
 	}
@@ -40,5 +42,8 @@ public class Complex {
 		//Возвращает амплитуду этого числа
 		return (this.re * this.re + this.im * this.im);
 	}
-	
+	public static Complex doubleToComplex(double re) {
+		//Конвертирование duble в комплексное число
+		return new Complex(re);
+	}
 }
