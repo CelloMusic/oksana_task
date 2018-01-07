@@ -24,10 +24,10 @@ public class Main {
 		X = FFT.prefft(x);
 		X = FFT.fft(X);
 		X = FFT.nfft(X);
+		//надо обрезать половину спектра и пилить абеля
 		for (Complex c: X) {
-			System.out.println(c.ampl());
+			System.out.println(c.getRe());
 		}
-
 	}
 
 }
