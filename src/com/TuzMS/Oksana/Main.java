@@ -3,9 +3,8 @@ package com.TuzMS.Oksana;
 public class Main {
 
 	public static void main(String[] args) {
-		double[] d = {1, 1, 1, 0.995, 0.982, 0.934, 0.843, 0.704,
-				0.579, 0.445, 0.3011, 0.223, 0.156, 0.09, 0.034,
-				0.008, 0.0001, 0};
+		double[] d = {1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3,
+				0.2, 0.1, 0};
 		Complex[] x = new Complex[d.length];
 		for (int i = 0; i < x.length; i++) {
 			x[i] = Complex.doubleToComplex(d[i]);
@@ -20,14 +19,28 @@ public class Main {
 				b = false;
 			}
 		}
-		Complex[] X = new Complex[N];
-		X = FFT.prefft(x);
+		Complex[] X = new Complex[2 * N];
+		X = zerkalo(FFT.prefft(x));
 		X = FFT.fft(X);
 		X = FFT.nfft(X);
-		//надо обрезать половину спектра и пилить абеля
-		for (Complex c: X) {
+		Complex[] spektr = new Complex[N];
+		for (int i = 0; i < N; i++) spektr[i] = X[i + N]; 
+		/*for (Complex c: spektr) {
 			System.out.println(c.getRe());
+		}*/
+		ObratAbel A = new ObratAbel(spektr, d.length, 10);
+		for (int i = 0; i < d.length; i++) {
+			d[i] = A.Abel(i);
+			System.out.println(d[i]);
 		}
+	}
+	
+	private static Complex[] zerkalo(Complex[] x) {
+		Complex[] X = new Complex[2 * x.length];
+		for (int i = 0; i < x.length; i++) {
+			X[i + x.length] = X[x.length -1 - i] = x[i];
+		}
+		return X;
 	}
 
 }
