@@ -12,8 +12,6 @@ public class Complex {
 	public Complex(double re) {
 		this.re = re;
 	}
-
-	
 	
 	public Complex sopr() {
 		return new Complex(re, -im);
@@ -46,4 +44,9 @@ public class Complex {
 		//Конвертирование duble в комплексное число
 		return new Complex(re);
 	}
+	public double getRe() {
+		return this.re;
+	}
+	
+	
 }
