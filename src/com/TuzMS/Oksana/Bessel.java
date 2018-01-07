@@ -19,7 +19,7 @@ public class Bessel {
 	
 	public static double BesselFunc(double x, int n) {
 		//Jn(x) сама функция бесселя
-		int N = 20; //Количество членов рядя Тейлора
+		int N = 30; //Количество членов рядя Тейлора
 		double J = 1 / (Fact(n)*Math.pow(2, n));
 		double j = 1;
 		for (int i = N-1; i >= 1; i--) {
